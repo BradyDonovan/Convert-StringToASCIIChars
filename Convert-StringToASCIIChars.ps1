@@ -25,17 +25,17 @@ function Convert-StringToASCIIChars {
         [string]$Path
     )
     Try {
+        # Grab file contents
         $content = Get-Content $Path -raw
-    
-        # convert content to an array, for each char convert to raw ASCII value if alphanumeric, punctuation, CR, LF, or tab, then convert back to char
+        # Convert content to an array, for each char convert to raw ASCII value if alphanumeric, punctuation, CR, LF, or tab, then convert back to char
         $convertString = $content.ToCharArray() | ForEach-Object {
             $asciiIndex = [int][char]$_
             IF (((32..127) -contains $asciiIndex) -or (@(13, 10) -contains $asciiIndex) -or ($asciiIndex -eq 9)) {
                 [char][int]$asciiIndex
             }
         }
-        
-        return [String]::new($convertString)
+        # Return
+        [String]::new($convertString)
     }
     Catch {
         throw "$_"
