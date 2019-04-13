@@ -1,2 +1,2 @@
 # Convert-StringToASCIIChars
-Convert cryptic files containing unfriendly characters to raw string output.
+Convert cryptic files containing unfriendly characters to human readable output.
