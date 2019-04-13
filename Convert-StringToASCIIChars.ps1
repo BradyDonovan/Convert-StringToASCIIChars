@@ -25,7 +25,7 @@ function Convert-StringToASCIIChars {
         [string]$Path
     )
     Try {
-        $content = Get-Content $Path
+        $content = Get-Content $Path -raw
     
         # convert content to an array, for each char convert to raw ASCII value if alphanumeric, punctuation, CR, LF, or tab, then convert back to char
         $convertString = $content.ToCharArray() | ForEach-Object {
